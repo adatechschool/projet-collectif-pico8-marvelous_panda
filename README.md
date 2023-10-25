@@ -5,3 +5,10 @@ coucou les deux
 
 - personnage principal : la panda MengLan
 - but : s’échapper du zoo en résolvant des énigmes
+
+
+Ours, tigre, raccon
+Racoon : clé
+Tigre : sortir
+Poule : bambou
+Autres :  
