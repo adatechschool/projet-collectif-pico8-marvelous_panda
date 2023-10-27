@@ -77,45 +77,47 @@ function player_mouvement()
  if p.anim_t==0 then
     newox=0
     newoy=0
- if btn(⬅️) then
-  newx-=1
-  newox=8
-  p.flip=true
- elseif btn(➡️) then
-  newx+=1
-  newox=-8
-  p.flip=false
- elseif btn(⬆️) then
-  newy-=1
-  newoy=8
- elseif btn(⬇️) then
- 	newy+=1
-  newoy=-8
+  if btn(⬅️) then
+	  newx-=1
+	  newox=8
+	  p.flip=true
+	 elseif btn(➡️) then
+	  newx+=1
+	  newox=-8
+	  p.flip=false
+	 elseif btn(⬆️) then
+	  newy-=1
+	  newoy=8
+	 elseif btn(⬇️) then
+	 	newy+=1
+	  newoy=-8
+	 end
  end
- if p.anim_t%0.25!=0 then
+ if p.anim_t>=0.5 then
   p.sprite=21
  else
   p.sprite=20
  end
-end 
+  
  
  interact(newx,newy)
  
  if (newx!=p.x or newy!=p.y)
   and not
    check_flag(0,newx,newy)
-  then
+ then
   p.x=mid(0,newx,47)
   p.y=mid(0,newy,31)
   p.start_ox=newox
   p.start_oy=newoy
   p.anim_t=1
-  end
-  p.anim_t=max(p.anim_t-0.125,0)
-  p.ox=p.start_ox*p.anim_t
-  p.oy=p.start_oy*p.anim_t
-end
- 
+ end
+ p.anim_t=max(p.anim_t-0.125,0)
+ p.ox=p.start_ox*p.anim_t
+ p.oy=p.start_oy*p.anim_t
+
+end 
+
 function draw_player()
 	spr(p.sprite,p.x*8+p.ox,
 	    p.y*8+p.oy,1,1,p.flip)
