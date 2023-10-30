@@ -3,10 +3,16 @@ version 38
 __lua__
 function _init()
  create_player()
+ init_msg()
+ create_msg("bonjour meng meng",
+ "sors vite du zoo") 
 end
 
 function _update()
+if not messages[1] then
  player_mouvement()
+ end
+ update_msg()
  update_camera()
  interact(x,y)
 end
@@ -17,6 +23,7 @@ function _draw()
 	palt(12,true)
 	draw_map()
 	draw_player()
+	draw_msg()
 	draw_ui()
 	palt()
 end
@@ -156,7 +163,35 @@ function open_door_poule(x,y)
 end
 
 -->8
---bambou
+--messages
+function init_msg()
+ messages={}
+ end
+ 
+function create_msg(name,...)
+ msg_title=name
+ messages={...}
+ end
+
+function update_msg()
+ if (btnp(❎)) then
+ deli(messages,1)
+ end
+end
+
+function draw_msg()
+ if messages[1] then
+ local y=179
+ if p.y%16>9 then 
+    y=10
+ end
+ rectfill(0,y+40,125,y+70,1)
+ rect(0,y+40,125,y+70,5)
+ print(msg_title,7,y+45,4)
+ print(messages[1],7,y+55,7)
+ end
+end 
+
 
 __gfx__
 00000000cccccccccccccccc33333333ccbbbccccccccccc11111111000000009ccc9cccccc777cccccc8cccccaccaccccdccdcccc9cc9cccc4cc4cccccaaccc
