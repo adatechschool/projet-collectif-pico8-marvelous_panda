@@ -106,6 +106,7 @@ function player_mouvement()
  interact_cle(newx,newy)
  interact_groot(newx,newy)
  message_poule(newx,newy)
+ message_tigre(newx,newy)
 
  if (newx!=p.x or newy!=p.y)and not
    check_flag(0,newx,newy)
@@ -194,6 +195,12 @@ function message_poule(x,y)
 	create_msg("cot cot", "merci beaucoup")
 	end
 end
+
+function message_tigre(x,y)
+	if x==39 and y==7 then
+	create_msg("tigrou", "roooaar ! ne touche pas a ma clef")
+	end
+end
 -->8
 --cles
 function pick_up_cle(x,y)
@@ -204,9 +211,11 @@ end
 function interact_cle(x,y)
 	if check_flag(3,x,y) then
 	 pick_up_cle(x,y)
+	 create_msg("stop","ma clef")
 	 elseif check_flag(5,x,y)
 		and p.cles>0 then
 		open_door_tigre(x,y)
+		create_msg("ooooh non", "il est parti", "mais ce message est beaucoup", "trop long")
  end
 end
 -->8
