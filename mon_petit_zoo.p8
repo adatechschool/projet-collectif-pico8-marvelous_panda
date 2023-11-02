@@ -125,6 +125,9 @@ function player_mouvement()
  interact_bambou(newx,newy)
  message_poule(newx,newy)
  message_tigre(newx,newy)
+ message_singe(newx,newy)
+message_chien(newx,newy)
+message_ours(newx,newy)
  
 
  if (newx!=p.x or newy!=p.y)and not
@@ -219,6 +222,24 @@ function message_tigre(x,y)
 	if x==39 and y==7 then
 	create_msg("tigrou", "roooaar !","ne touche pas a ma clef")
 	end
+end
+
+function message_chien(x,y)
+ if x==41 and y==17 then 
+ create_msg("chien","woof woof!","le panda s'echappe!")
+ end
+end 
+
+function message_ours(x,y)
+ if x==6 and y==6 then 
+ create_msg("ours","tu aurais du miel?")
+ end
+end
+
+function mesage_singe(x,y)
+ if x==43 and y==28 then
+    create_msg("singe","essaie de sortir par \n la porte secrete")
+ end
 end
 -->8
 --cles
